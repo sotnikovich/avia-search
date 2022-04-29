@@ -1,0 +1,13 @@
+.filter__title {
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.filter__item {
+    margin-bottom: 5px;
+}
+
+.filter__button {
+    margin-right: 3px;
+}
+

@@ -1,0 +1,18 @@
+@import url(./fonts/normalize.css);
+@import url(./fonts/fonts.scss);
+@import url(./styles/flight.css);
+@import url(./styles/flightList.css);
+@import url(./styles/filterList.css);
+@import url(./styles/segment.css);
+@import url(./styles/filter.css);
+
+html {
+    font-family: OpenSans, sans-serif;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+}

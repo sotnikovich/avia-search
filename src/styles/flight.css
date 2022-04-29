@@ -1,0 +1,51 @@
+.flight {
+    width: 70vw;
+}
+
+.flight__header {
+    background-color: #0087c9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 10px 20px;
+}
+
+.flight__carrier {
+    color: white;
+    font-size: 16px;
+}
+
+.flight__price {
+    margin: 0;
+    text-align: end;
+    color: white;
+    font-size: 20px;
+    line-height: 14px;
+}
+
+.flight__price-span {
+    font-size: 12px;
+}
+
+.flight__button {
+    border: none;
+    color: white;
+    background-color: orange;
+    padding: 10px;
+    transition: background-color 0.08s;
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.flight__button:hover {
+    opacity: 0.5;
+}
+
+.flight__line {
+    border-top: 1px solid blue;
+    border-bottom: 1px solid blue;
+    background: blue;
+}

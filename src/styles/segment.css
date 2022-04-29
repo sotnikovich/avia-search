@@ -1,0 +1,89 @@
+.segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.segment__cities {
+    margin: 0 0 0 20px;
+    align-self: start;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.segment__span {
+    display: block;
+    color: blue;
+    font-size: 16px;
+    margin: 0 4px 0 2px;
+}
+
+.segment__thin-line {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    background: rgba(234, 234, 234, .5);
+    width: 100%;
+}
+
+.segment__text {
+    margin: 0 40px;
+    width: 95%;
+}
+
+.segment__date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.segment__time {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.segment__time:last-child {
+    padding-right: 20px;
+}
+
+.segment__line {
+    text-align: center;
+    position: relative;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.segment__line-text {
+    display: inline-block;
+    padding-top: 8px;
+    color: orange;
+}
+
+.segment__line-text:before,
+.segment__line-text:after {
+    border-top: 1px solid grey;
+    display: block;
+    height: 1px;
+    content: " ";
+    width: 40%;
+    position: absolute;
+    left: 0;
+    top: 1.2em;
+}
+
+.segment__line-text:after {
+    right: 0;
+    left: auto;
+}
+
+.segment__fat-line {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    width: 80%;
+}
+
