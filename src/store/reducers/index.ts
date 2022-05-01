@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { initReducer, InitInitialState } from "./default";
+import { initReducer, InitInitialState } from "./init";
 import { sortReducer, SortInitialState } from "./sort";
 
 export type CommonReducersType = {

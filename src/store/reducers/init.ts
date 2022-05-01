@@ -1,6 +1,6 @@
 import { GET_FLIGHTS } from "../../constants";
-import { FlightProps } from "../../types";
-import { InitActions } from "../actions/default";
+import { FlightProps } from "../../types/types";
+import { InitActions } from "../actions";
 
 export type InitInitialState = {
   flights: Array<FlightProps>;

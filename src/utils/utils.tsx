@@ -1,4 +1,4 @@
-import { Filters, FlightProps} from "../types";
+import { Filters, FlightProps, priceFilter } from "../types/types";
 import flightsData from "../flights.json";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
@@ -11,7 +11,7 @@ import {
   sortFlightDecrease,
   sortFlightDuration,
   sortFlightIncrease,
-} from "../store/actions/sort";
+} from "../store/actions";
 
 const emptyFieldFiller = (field: any): string => {
   return field !== undefined ? field.caption : "";
@@ -40,13 +40,16 @@ export const setFlightsArray = (): Array<FlightProps> => {
         arrivalCity: emptyFieldFiller(
           forwardFlight.segments[forwardFlight.segments.length - 1].arrivalCity
         ),
-        arrivalAirport: forwardFlight.segments[forwardFlight.segments.length - 1]
-          .arrivalAirport.caption,
-        arrivalAirportUid: forwardFlight.segments[forwardFlight.segments.length - 1]
-          .arrivalAirport.uid,
+        arrivalAirport:
+          forwardFlight.segments[forwardFlight.segments.length - 1]
+            .arrivalAirport.caption,
+        arrivalAirportUid:
+          forwardFlight.segments[forwardFlight.segments.length - 1]
+            .arrivalAirport.uid,
         isTranfer: forwardFlight.segments.length > 1,
         duration: forwardFlight.duration,
-        arrivalDate: forwardFlight.segments[forwardFlight.segments.length - 1].arrivalDate,
+        arrivalDate:
+          forwardFlight.segments[forwardFlight.segments.length - 1].arrivalDate,
         departureDate: forwardFlight.segments[0].departureDate,
       },
       backFlight: {
@@ -57,13 +60,16 @@ export const setFlightsArray = (): Array<FlightProps> => {
         arrivalCity: emptyFieldFiller(
           backFlight.segments[backFlight.segments.length - 1].arrivalCity
         ),
-        arrivalAirport: backFlight.segments[backFlight.segments.length - 1].arrivalAirport
-          .caption,
-        arrivalAirportUid: backFlight.segments[backFlight.segments.length - 1].arrivalAirport
-          .uid,
+        arrivalAirport:
+          backFlight.segments[backFlight.segments.length - 1].arrivalAirport
+            .caption,
+        arrivalAirportUid:
+          backFlight.segments[backFlight.segments.length - 1].arrivalAirport
+            .uid,
         isTranfer: backFlight.segments.length > 1,
         duration: backFlight.duration,
-        arrivalDate: backFlight.segments[backFlight.segments.length - 1].arrivalDate,
+        arrivalDate:
+          backFlight.segments[backFlight.segments.length - 1].arrivalDate,
         departureDate: backFlight.segments[0].departureDate,
       },
     };
@@ -178,7 +184,6 @@ export const allFiltersHandler = (
     case "duration":
       dispatch(sortFlightDuration());
       break;
-
     case "transfer":
       dispatch(
         filterTransfer({
@@ -195,16 +200,26 @@ export const allFiltersHandler = (
         })
       );
       break;
+  }
+
+  if ((target as HTMLInputElement).name === "Авиакомпании") {
+    dispatch(filterAirline(target.id));
+  }
+};
+
+export const priceFilterHandler = (
+  e: ChangeEvent,
+  dispatch: Dispatch<any>,
+  filters: priceFilter
+) => {
+  const { target } = e;
+  switch (target.id) {
     case "from":
       dispatch(filterMinPrice(filters.price.from));
       break;
     case "till":
       dispatch(filterMaxPrice(filters.price.till));
       break;
-  }
-
-  if ((target as HTMLInputElement).name === "Авиакомпании") {
-    dispatch(filterAirline(target.id));
   }
 };
 
@@ -218,7 +233,6 @@ export const filterFlights = (
   }
 ) => {
   let results: Array<FlightProps> = [];
-
   switch (filters.sort) {
     case "decrease":
       results.push(...sortFlightsDecreasePrice(flights));

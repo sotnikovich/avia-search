@@ -28,17 +28,6 @@ export const sortFilterData = [
     },
   ];
   
-  export const priceFilterData = [
-    {
-      name: "От ",
-      value: "from",
-    },
-    {
-      name: "До ",
-      value: "till",
-    },
-  ];
-  
   export const airlinesFilterData = [
     {
       name: "Аэрофлот",

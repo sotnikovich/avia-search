@@ -3,8 +3,8 @@ import FilterList from "./FilterList";
 import FlightsList from "./FlightList";
 import { useDispatch, useSelector } from "react-redux";
 import { filterFlights, setFlightsArray } from "../utils/utils";
-import { setFlights } from "../store/actions/sort";
-import { getFlights } from "../store/actions/default";
+import { setFlights } from "../store/actions";
+import { getFlights } from "../store/actions";
 import { CommonReducersType } from "../store/reducers/index";
 
 function App() {

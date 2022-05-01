@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { generateKey } from "../filters";
+import { generateKey } from "../filters/filters";
 import { useDispatch, useSelector } from "react-redux";
 import { allFiltersHandler } from "../utils/utils";
-import { CommonReducersType } from "../store/reducers";
+import { CommonReducersType } from "../store/reducers/index";
 
-type SingleFilterProps = {
+type FilterProps = {
   title: string;
   filterData: Array<{
     name: string;
@@ -16,9 +16,9 @@ type SingleFilterProps = {
   type: string;
 };
 
-const Filter: FC<SingleFilterProps> = ({ title, filterData, type }) => {
+const Filter: FC<FilterProps> = ({ title, filterData, type }) => {
   const dispatch = useDispatch();
-  const { checked, isTransfer, isNoTransfer, from, till } = useSelector(
+  const { checked, isTransfer, isNoTransfer } = useSelector(
     (state: CommonReducersType) => ({
       checked: state.sort.checkedSort,
       isTransfer: state.sort.isTransfer,
@@ -30,12 +30,12 @@ const Filter: FC<SingleFilterProps> = ({ title, filterData, type }) => {
 
   return (
     <>
-      <p className="filter__title">{title}</p>
+      <h2 className="filter__title">{title}</h2>
       <form className="filter__list">
         {filterData.map((item, i) => (
           <span className="filter__item" key={generateKey(i)}>
-            {title === "Цена" && `${item.name}`}
-            <input className="filter__button"
+            <input
+              className="filter__button"
               type={type}
               id={item.value}
               name={title}
@@ -45,10 +45,6 @@ const Filter: FC<SingleFilterProps> = ({ title, filterData, type }) => {
                   filter: {
                     transfer: isTransfer,
                     noTransfer: isNoTransfer,
-                  },
-                  price: {
-                    from: item.value === "from" ? Number(e.target.value) : from,
-                    till: item.value === "till" ? Number(e.target.value) : till,
                   },
                 });
               }}
@@ -67,13 +63,6 @@ const Filter: FC<SingleFilterProps> = ({ title, filterData, type }) => {
               }
               disabled={title === "Авиакомпании" ? item.isActive : false}
               pattern={title === "Цена" ? "[0-9]+" : undefined}
-              value={
-                title === "Цена" && item.value === "from"
-                  ? from
-                  : title === "Цена" && item.value === "till"
-                  ? till
-                  : ""
-              }
             />
             {title !== "Цена" && `- ${item.name}`}{" "}
             {title === "Авиакомпании" && `от ${item.price} руб.`} <br />

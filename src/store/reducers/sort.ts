@@ -8,8 +8,8 @@ import {
     FILTER_MAX_PRICE,
     FILTER_AIRLINE,
   } from "../../constants";
-  import { SortActions } from "../actions/sort";
-  import { FlightProps } from "../../types";
+  import { SortActions } from "../actions";
+  import { FlightProps } from "../../types/types";
   
   export type SortInitialState = {
     decreasePrice: boolean;
@@ -97,8 +97,12 @@ import {
       }
       case FILTER_AIRLINE: {
         const { payload } = action;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
         const changedAirlines: string[] = state.airlines.includes(payload)
           ? state.airlines.filter((airline, i) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
               if (i !== state.airlines.indexOf(payload)) return airline;
             })
           : [...state.airlines, payload];

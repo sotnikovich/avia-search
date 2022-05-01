@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Segment from "./Segment";
-import { FlightProps } from "../types";
+import { FlightProps } from "../types/types";
 
 const Flight: FC<FlightProps> = (flight) => {
   return (

@@ -25,9 +25,11 @@ export type FlightProps = {
       transfer: boolean;
       noTransfer: boolean;
     };
-    price: {
-      from: number;
-      till: number;
-    };
   };
 
+export type priceFilter = {
+  price: {
+    from: number;
+    till: number;
+  };
+}

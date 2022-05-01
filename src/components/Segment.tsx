@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FlightLeg } from "../types";
+import { FlightLeg } from "../types/types";
 import { minutesConverter, setTime, setDate } from "../utils/utils";
 
 const Segment: FC<FlightLeg> = (flight) => {
@@ -17,14 +17,16 @@ const Segment: FC<FlightLeg> = (flight) => {
         <p className="segment__date">
           <span className="segment__time">
             {setTime(flight.departureDate)}
-            <span className="span">
+            <span className="segment__time-span">
               {" "}
               {setDate(flight.departureDate)}
             </span>
           </span>
           <span>&#128336; {minutesConverter(flight.duration)}</span>
           <span className="segment__time">
-            <span className="span">{setDate(flight.arrivalDate)}</span>{" "}
+            <span className="segment__time-span">
+              {setDate(flight.arrivalDate)}
+            </span>{" "}
             {setTime(flight.arrivalDate)}
           </span>
         </p>
